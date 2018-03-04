@@ -1,0 +1,33 @@
+//- Hack, bug in Polymer (https://github.com/Polymer/polymer/issues/2386), font not loaded from stylesheet import below, so it was moved here
+style.
+	@font-face {
+		font-family : Font Awesome\ 5 Brands;
+		font-style  : normal;
+		font-weight : 400;
+		src         : url(fa-brands-400.woff2?no-preload) format("woff2")
+	}
+
+	@font-face {
+		font-family : Font Awesome\ 5 Free;
+		font-style  : normal;
+		font-weight : 400;
+		src         : url(fa-regular-400.woff2?no-preload) format("woff2")
+	}
+
+	@font-face {
+		font-family : Font Awesome\ 5 Free;
+		font-style  : normal;
+		font-weight : 900;
+		src         : url(fa-solid-900.woff2?no-preload) format("woff2")
+	}
+
+
+dom-module#cs-icon
+	link(rel="import" href="fontawesome-all.min.css" type="css")
+	link(rel="import" href="style.css" type="css")
+	template
+		i(hidden="[[multiple]]" class$="[[regular]]")
+		span.fa-stack(hidden="[[!multiple]]")
+			i(class$="[[stacked1]]")
+			i(class$="[[stacked2]]")
+	script(src="script.js")

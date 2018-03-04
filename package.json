@@ -1,0 +1,41 @@
+{
+	"name"         : "cleverstyle-widgets",
+	"description"  : "Set of useful unstyled custom elements (Web Components) that work nicely with Shadow DOM",
+	"keywords"     : [
+		"clevertyle",
+		"widgets",
+		"webcomponents",
+		"polymer",
+		"button",
+		"dropdown",
+		"form",
+		"icon",
+		"input",
+		"label",
+		"dialog",
+		"modal",
+		"notify",
+		"notification",
+		"pagination",
+		"progress",
+		"switcher",
+		"tabs",
+		"textarea",
+		"tooltip"
+	],
+	"version"      : "0.1.0",
+	"homepage"     : "https://github.com/nazar-pc/CleverStyle-Widgets",
+	"author"       : "Nazar Mokrynskyi <nazar@mokrynskyi.com>",
+	"repository"   : {
+		"type" : "git",
+		"url"  : "git://github.com/nazar-pc/CleverStyle-Widgets.git"
+	},
+	"license"      : "0BSD",
+	"main"         : "src/index.html",
+	"files"        : [
+		"src"
+	],
+	"dependencies" : {
+		"@polymer/polymer" : "^2.5.0"
+	}
+}

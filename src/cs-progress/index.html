@@ -1,0 +1,25 @@
+<dom-module id="cs-progress-styles"><template><style>cs-progress > progress::-webkit-progress-bar {
+	background : inherit;
+}
+
+/* Some declarations will be duplicated for each browser, otherwise they fail to apply */
+cs-progress > progress::-moz-progress-bar {
+	@apply --cs-button;
+	@apply --cs-progress-bar;
+}
+
+cs-progress > progress::-webkit-progress-value {
+	@apply --cs-button;
+	@apply --cs-progress-bar;
+}
+
+cs-progress[primary] > progress::-moz-progress-bar {
+	@apply --cs-button-primary;
+	@apply --cs-progress-bar-primary;
+}
+
+cs-progress[primary] > progress::-webkit-progress-value {
+	@apply --cs-button-primary;
+	@apply --cs-progress-bar-primary;
+}
+</style></template></dom-module><dom-module id="cs-progress"><link rel="import" href="style.css" type="css"><template><div id="text" hidden$="[[!textProgress]]">[[value]]%</div><slot></slot></template><script src="script.js"></script></dom-module>
