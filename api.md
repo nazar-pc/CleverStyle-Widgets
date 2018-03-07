@@ -84,7 +84,7 @@ Example (and expected markup):
         <label>Name</label>
         <csw-input-text><input></csw-input-text>
         <label>Description</label>
-        <textarea is="csw-textarea"></textarea>
+        <csw-textarea><textarea></textarea></csw-textarea>
     </form>
 </csw-form>
 ```
@@ -290,7 +290,7 @@ Properties:
 
 Example:
 ```html
-<progress is="csw-progress" value="20"></progress>
+<csw-progress><progress value="20"></progress></csw-progress>
 ```
 
 #### csw-switcher
@@ -303,22 +303,22 @@ Properties:
 
 Examples:
 ```html
-<nav is="csw-tabs">
+<csw-tabs>
     <csw-button><button type="button">One</button></csw-button>
     <csw-button><button type="button">Two</button></csw-button>
-</nav>
-<section is="csw-switcher">
+</csw-tabs>
+<csw-switcher>
     <article>One</article>
     <article>Two</article>
-</section>
-<section is="csw-switcher" selected="[[selected]]">
+</csw-switcher>
+<csw-switcher selected="[[selected]]">
     <article>One</article>
     <article>Two</article>
-</section>
-<nav is="csw-tabs" selected="{{selected}}">
+</csw-switcher>
+<csw-tabs selected="{{selected}}">
     <csw-button><button type="button">One</button></csw-button>
     <csw-button><button type="button">Two</button></csw-button>
-</nav>
+</csw-tabs>
 ```
 
 #### csw-select
@@ -361,10 +361,10 @@ Properties:
 
 Example:
 ```html
-<nav is="csw-tabs">
+<csw-tabs>
     <csw-button><button type="button">One</button></csw-button>
     <csw-button><button type="button">Two</button></csw-button>
-</nav>
+</csw-tabs>
 ```
 
 #### csw-textarea
