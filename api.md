@@ -1,31 +1,31 @@
 CleverStyle Widgets includes following elements:
-* `cs-button`
-* `cs-dropdown`
-* `cs-form`
-* `cs-group`
-* `cs-icon`
-* `cs-input-text`
-* `cs-label-button`
-* `cs-label-switcher`
-* `cs-link-button`
-* `cs-modal`
-* `cs-notify`
-* `cs-pagination`
-* `cs-progress`
-* `cs-switcher`
-* `cs-select`
-* `cs-tabs`
-* `cs-textarea`
-* `cs-tooltip`
+* `csw-button`
+* `csw-dropdown`
+* `csw-form`
+* `csw-group`
+* `csw-icon`
+* `csw-input-text`
+* `csw-label-button`
+* `csw-label-switcher`
+* `csw-link-button`
+* `csw-modal`
+* `csw-notify`
+* `csw-pagination`
+* `csw-progress`
+* `csw-switcher`
+* `csw-select`
+* `csw-tabs`
+* `csw-textarea`
+* `csw-tooltip`
 
-#### cs-button
+#### csw-button
 Wrapper element for native `button` element.
 
 Attributes (also available as properties, so use whatever is more convenient):
 * active - boolean, allows to force `:active` state
 * compact - boolean, forces button to have smaller size than usually by reducing padding
-* icon-before - string, icon from `cs-icon` element added before button contents, only used on initialization, further changes are not reflected in UI
-* icon-after - string, icon from `cs-icon` element added after button contents, only used on initialization, further changes are not reflected in UI
+* icon-before - string, icon from `csw-icon` element added before button contents, only used on initialization, further changes are not reflected in UI
+* icon-after - string, icon from `csw-icon` element added after button contents, only used on initialization, further changes are not reflected in UI
 * icon - alias for `icon-before`, only used on initialization, further changes are not reflected in UI
 * primary - boolean, allows to apply different styling to button, usually used for some key actions
 * tight - boolean, affects styling by removing space after element and placing directly before next element (useful for button groups and combining with inputs)
@@ -37,21 +37,21 @@ Properties:
 
 Examples:
 ```html
-<cs-button><button type="button">Button</button></cs-button>
-<cs-button primary><button type="button">Primary button</button></cs-button>
-<cs-button>
+<csw-button><button type="button">Button</button></csw-button>
+<csw-button primary><button type="button">Primary button</button></csw-button>
+<csw-button>
     <button on-tap="_enable" compact>
-        <cs-icon icon="check"></cs-icon>
+        <csw-icon icon="check"></csw-icon>
         [[L.enable]]
     </button>
-</cs-button>
+</csw-button>
 <template is="dom-bind">
-    <cs-modal this="{{modal}}">One Two Three</cs-modal>
-    <cs-button bind="[[modal]]" action="open"><button type="button">Button</button></cs-button>
+    <csw-modal this="{{modal}}">One Two Three</csw-modal>
+    <csw-button bind="[[modal]]" action="open"><button type="button">Button</button></csw-button>
 </template>
 ```
 
-#### cs-dropdown
+#### csw-dropdown
 Regular dropdown element with some content inside.
 
 Attributes (also available as properties, so use whatever is more convenient):
@@ -59,37 +59,37 @@ Attributes (also available as properties, so use whatever is more convenient):
 * opened - boolean, is set automatically when dropdown is opened
 
 Properties:
-* target - object, if `cs-button` object passed, click on corresponding button will toggle dropdown (if dropdown is placed right after button - this property will be filled automatically)
+* target - object, if `csw-button` object passed, click on corresponding button will toggle dropdown (if dropdown is placed right after button - this property will be filled automatically)
 
 Example:
 ```html
-<cs-button icon="cog"><button type="button" small-button>[[L.settings]]</button></cs-button>
-<cs-dropdown>
-    <cs-group vertical>
-        <cs-button><button type="button" on-tap="_general_settings">[[L.general]]</button></cs-link-button>
-        <cs-button><button type="button" on-tap="_change_password">[[L.change_password]]</button></cs-button>
-    </cs-group>
-</cs-dropdown>
+<csw-button icon="cog"><button type="button" small-button>[[L.settings]]</button></csw-button>
+<csw-dropdown>
+    <csw-group vertical>
+        <csw-button><button type="button" on-tap="_general_settings">[[L.general]]</button></csw-link-button>
+        <csw-button><button type="button" on-tap="_change_password">[[L.change_password]]</button></csw-button>
+    </csw-group>
+</csw-dropdown>
 ```
 
-#### cs-form
+#### csw-form
 Wrapper element for native `form` element.
 
 Primary purpose of element is to provide simple form styling (see example below).
 
 Example (and expected markup):
 ```html
-<cs-form>
+<csw-form>
     <form>
         <label>Name</label>
-        <cs-input-text><input></cs-input-text>
+        <csw-input-text><input></csw-input-text>
         <label>Description</label>
-        <textarea is="cs-textarea"></textarea>
+        <textarea is="csw-textarea"></textarea>
     </form>
-</cs-form>
+</csw-form>
 ```
 
-#### cs-group
+#### csw-group
 Creates either horizontal or vertical group of elements (for instance, buttons), where there is no space between them.
 
 Attributes (also available as properties, so use whatever is more convenient):
@@ -97,13 +97,13 @@ Attributes (also available as properties, so use whatever is more convenient):
 
 Example:
 ```html
-<cs-group>
-    <cs-button primary><button type="submit">OK</button></cs-button>
-    <cs-button><button type="button">Cancel</button></cs-button>
-</cs-group>
+<csw-group>
+    <csw-button primary><button type="submit">OK</button></csw-button>
+    <csw-button><button type="button">Cancel</button></csw-button>
+</csw-group>
 ```
 
-#### cs-icon
+#### csw-icon
 Icon element, uses [FontAwesome](http://fontawesome.io/) icons set.
 
 Attributes (also available as properties, so use whatever is more convenient):
@@ -120,14 +120,14 @@ Properties:
 
 Examples:
 ```html
-<cs-icon icon="home"></cs-icon>
-<cs-icon icon="home" flip-x></cs-icon>
-<cs-icon icon="circle home"></cs-icon>
-<cs-icon icon="circle home"></cs-icon>
-<cs-icon icon="spinner" spin></cs-icon>
+<csw-icon icon="home"></csw-icon>
+<csw-icon icon="home" flip-x></csw-icon>
+<csw-icon icon="circle home"></csw-icon>
+<csw-icon icon="circle home"></csw-icon>
+<csw-icon icon="spinner" spin></csw-icon>
 ```
 
-#### cs-input-text
+#### csw-input-text
 Wrapper element for native `input` element.
 
 Attributes (also available as properties, so use whatever is more convenient):
@@ -142,16 +142,16 @@ Input element will start firing `value-change` event on any `change` or `input` 
 
 Examples:
 ```html
-<cs-input-text><input></cs-input-text>
-<cs-input-text><input type="email" value="{{email}}"></cs-input-text>
-<cs-input-text full-size><input></cs-input-text>
+<csw-input-text><input></csw-input-text>
+<csw-input-text><input type="email" value="{{email}}"></csw-input-text>
+<csw-input-text full-size><input></csw-input-text>
 <p>
-    <cs-input-text tight><input></cs-input-text>
-    <cs-button><button>Button right after input</button></cs-button>
+    <csw-input-text tight><input></csw-input-text>
+    <csw-button><button>Button right after input</button></csw-button>
 </p>
 ```
 
-#### cs-label-button
+#### csw-label-button
 Wrapper element for native `label` element.
 
 Element is intended to replace regular UI of `input[type=checkbox]` and/or `input[type=radio]` while using native semantic as much as possible (see example).
@@ -167,56 +167,56 @@ Properties:
 
 Example:
 ```html
-<cs-label-button>
+<csw-label-button>
     <label>
         <input checked type="radio" value="0">
         Zero
     </label>
-</cs-label-button>
-<cs-label-button>
+</csw-label-button>
+<csw-label-button>
     <label>
         <input checked type="radio" value="1">
         One
     </label>
-</cs-label-button>
+</csw-label-button>
 ```
 
-#### cs-label-switcher
+#### csw-label-switcher
 Wrapper element for native `label` element.
 
-Completely similar to `cs-label-button` (except missing `first` and `last` attributes), but has checkbox-like UI instead of button-like in `cs-label-button`.
+Completely similar to `csw-label-button` (except missing `first` and `last` attributes), but has checkbox-like UI instead of button-like in `csw-label-button`.
 Example:
 ```html
-<cs-label-switcher>
+<csw-label-switcher>
     <label>
         <input checked type="radio" value="0">
         Zero
     </label>
-</cs-label-switcher>
-<cs-label-switcher>
+</csw-label-switcher>
+<csw-label-switcher>
     <label>
         <input checked type="radio" value="1">
         One
     </label>
-</cs-label-switcher>
+</csw-label-switcher>
 ```
 
-#### cs-link-button
+#### csw-link-button
 Wrapper element for native `a` element.
 
-Button-like UI of link. Completely similar to `cs-button` (except missing `action` and `bind` properties).
+Button-like UI of link. Completely similar to `csw-button` (except missing `action` and `bind` properties).
 
 Example:
 ```html
-<cs-link-button>
+<csw-link-button>
     <a href="/" icon="home">Home</a>
-</cs-link-button>
+</csw-link-button>
 ```
 
-#### cs-modal
+#### csw-modal
 Modal dialog.
 
-If placed right after `cs-button` element, then button will be automatically used for modal opening.
+If placed right after `csw-button` element, then button will be automatically used for modal opening.
 
 Attributes (also available as properties, so use whatever is more convenient):
 * as-is - boolean, if specified then there will be no background in modal
@@ -230,15 +230,15 @@ Properties:
 Examples:
 ```html
 <template is="dom-bind">
-    <cs-modal this="{{modal}}">One Two Three</cs-modal>
-    <cs-button bind="[[modal]]" action="open"><button type="button">Button</button></cs-button>
+    <csw-modal this="{{modal}}">One Two Three</csw-modal>
+    <csw-button bind="[[modal]]" action="open"><button type="button">Button</button></csw-button>
 </template>
-<cs-button><button type="button">Button</button></cs-button>
-<cs-modal>One Two Three</cs-modal>
-<cs-modal auto-open>One Two Three</cs-modal>
+<csw-button><button type="button">Button</button></csw-button>
+<csw-modal>One Two Three</csw-modal>
+<csw-modal auto-open>One Two Three</csw-modal>
 ```
 
-#### cs-notify
+#### csw-notify
 Notification element, on creation will move itself to to `document.documentElement` if not there already.
 
 Attributes (also available as properties, so use whatever is more convenient):
@@ -257,12 +257,12 @@ Properties:
 
 Examples:
 ```html
-<cs-notify>Hello</cs-notify>
-<cs-notify success left>Hello</cs-notify>
-<cs-notify error bottom right>Hello</cs-notify>
+<csw-notify>Hello</csw-notify>
+<csw-notify success left>Hello</csw-notify>
+<csw-notify error bottom right>Hello</csw-notify>
 ```
 
-#### cs-pagination
+#### csw-pagination
 Generates pagination by specified page number and total number of pages, especially convenient to use with data bindings.
 
 Attributes (also available as properties, so use whatever is more convenient):
@@ -271,10 +271,10 @@ Attributes (also available as properties, so use whatever is more convenient):
 
 Example:
 ```html
-<cs-pagination page="{{page}}" pages="[[total_pages]]"></cs-pagination>
+<csw-pagination page="{{page}}" pages="[[total_pages]]"></csw-pagination>
 ```
 
-#### cs-progress
+#### csw-progress
 Wrapper element for native `progress` element.
 
 Attributes (also available as properties, so use whatever is more convenient):
@@ -290,38 +290,38 @@ Properties:
 
 Example:
 ```html
-<progress is="cs-progress" value="20"></progress>
+<progress is="csw-progress" value="20"></progress>
 ```
 
-#### cs-switcher
+#### csw-switcher
 Extends native `section` element.
 
-Switcher element, especially useful in conjunction with `cs-tabs` element (see example). If switcher is placed right after `cs-tabs` - tabs will control switcher automatically.
+Switcher element, especially useful in conjunction with `csw-tabs` element (see example). If switcher is placed right after `csw-tabs` - tabs will control switcher automatically.
 
 Properties:
 * selected - number, current selected content element index (starting from 0)
 
 Examples:
 ```html
-<nav is="cs-tabs">
-    <cs-button><button type="button">One</button></cs-button>
-    <cs-button><button type="button">Two</button></cs-button>
+<nav is="csw-tabs">
+    <csw-button><button type="button">One</button></csw-button>
+    <csw-button><button type="button">Two</button></csw-button>
 </nav>
-<section is="cs-switcher">
+<section is="csw-switcher">
     <article>One</article>
     <article>Two</article>
 </section>
-<section is="cs-switcher" selected="[[selected]]">
+<section is="csw-switcher" selected="[[selected]]">
     <article>One</article>
     <article>Two</article>
 </section>
-<nav is="cs-tabs" selected="{{selected}}">
-    <cs-button><button type="button">One</button></cs-button>
-    <cs-button><button type="button">Two</button></cs-button>
+<nav is="csw-tabs" selected="{{selected}}">
+    <csw-button><button type="button">One</button></csw-button>
+    <csw-button><button type="button">Two</button></csw-button>
 </nav>
 ```
 
-#### cs-select
+#### csw-select
 Wrapper element for native `select` element.
 
 Attributes (also available as properties, so use whatever is more convenient):
@@ -337,37 +337,37 @@ Select element will start firing `value-change` event on any `change` or `input`
 
 Examples:
 ```html
-<cs-select>
+<csw-select>
     <select>
         <option>One</option>
         <option>Two</option>
         <option>Three</option>
     </select>
-</cs-select>
-<cs-select selected="{{user_data.language}}">
+</csw-select>
+<csw-select selected="{{user_data.language}}">
     <select size="5">
         <template is="dom-repeat" items="[[languages]]" as="language">
             <option value="[[language.clanguage]]">[[language.description]]</option>
         </template>
     </select>
-</cs-select>
+</csw-select>
 ```
 
-#### cs-tabs
-Tabs functionality, especially useful in conjunction with `cs-switcher` element. If next element after tabs is `cs-switcher` - tabs will control it automatically.
+#### csw-tabs
+Tabs functionality, especially useful in conjunction with `csw-switcher` element. If next element after tabs is `csw-switcher` - tabs will control it automatically.
 
 Properties:
 * selected - number, current selected tab index (starting from 0)
 
 Example:
 ```html
-<nav is="cs-tabs">
-    <cs-button><button type="button">One</button></cs-button>
-    <cs-button><button type="button">Two</button></cs-button>
+<nav is="csw-tabs">
+    <csw-button><button type="button">One</button></csw-button>
+    <csw-button><button type="button">Two</button></csw-button>
 </nav>
 ```
 
-#### cs-textarea
+#### csw-textarea
 Wrapper element for native `textarea` element.
 
 Attributes (also available as properties, so use whatever is more convenient):
@@ -382,22 +382,22 @@ Textarea element will start firing `value-change` event on any `change` or `inpu
 
 Examples:
 ```html
-<cs-textarea><textarea></textarea></cs-textarea>
-<cs-textarea autosize full-width><textarea rows="5" value="{{content}}"></textarea></cs-textarea>
+<csw-textarea><textarea></textarea></csw-textarea>
+<csw-textarea autosize full-width><textarea rows="5" value="{{content}}"></textarea></csw-textarea>
 ```
 
-#### cs-tooltip
-Tooltip element. `cs-*` elements from this page which have `tooltip` property support will create `cs-tooltip` element automatically, explicit usage needed only for third-party or native elements.
+#### csw-tooltip
+Tooltip element. `csw-*` elements from this page which have `tooltip` property support will create `csw-tooltip` element automatically, explicit usage needed only for third-party or native elements.
 
-Tooltip is applied to element by placing `cs-tooltip` element inside (see examples), it will be removed from DOM after initialization.
+Tooltip is applied to element by placing `csw-tooltip` element inside (see examples), it will be removed from DOM after initialization.
 
 Examples:
 ```html
-<cs-button tooltip="Tooltip contents"><button>Button</button></cs-button>
-<cs-button>
+<csw-button tooltip="Tooltip contents"><button>Button</button></csw-button>
+<csw-button>
     <button tooltip="Tooltip contents">
         Button
-        <cs-tooltip></cs-tooltip>
+        <csw-tooltip></csw-tooltip>
     </button>
-</cs-button>
+</csw-button>
 ```

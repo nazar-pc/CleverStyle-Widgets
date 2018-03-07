@@ -1,0 +1,31 @@
+<dom-module id="csw-label-switcher-styles"><template><style>csw-label-switcher input {
+	/* Just ` display: none ` is not working here, because it will break focus support */
+	height    : 0;
+	margin    : 0;
+	width     : 0;
+	/* Hack: Firefox ignores zero size, so we need some more hacks */
+	position  : absolute;
+	transform : scale(0);
+}
+
+csw-label-switcher csw-icon {
+	@apply --csw-label-switcher-icon;
+}
+
+csw-label-switcher:active csw-icon,
+csw-label-switcher[active] csw-icon {
+	@apply --csw-label-switcher-active-icon;
+}
+
+csw-label-switcher:not(:active):not([active]):hover csw-icon {
+	@apply --csw-label-switcher-hover-icon;
+}
+
+csw-label-switcher input:focus + csw-icon {
+	@apply --csw-label-switcher-hover-icon;
+	@apply --csw-label-switcher-focus-icon;
+}
+
+csw-label-switcher label input:disabled + csw-icon {
+	@apply --csw-label-switcher-disabled-icon;
+}</style></template></dom-module><dom-module id="csw-label-switcher"><link rel="import" href="style.css" type="css"><template><slot></slot></template><script src="script.js"></script></dom-module>

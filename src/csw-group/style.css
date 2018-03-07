@@ -1,0 +1,47 @@
+/**
+ * @package CleverStyle Widgets
+ * @author  Nazar Mokrynskyi <nazar@mokrynskyi.com>
+ * @license 0BSD
+ */
+:host {
+	display        : inline-flex;
+	vertical-align : middle;
+
+	@apply --csw-no-selection;
+	@apply --csw-global;
+	@apply --csw-group;
+}
+
+:host([hidden]) {
+	display : none;
+}
+
+:host([vertical]) {
+	flex-direction : column;
+
+	@apply --csw-group-vertical;
+}
+
+::slotted(:not(template)) {
+	@apply --csw-group-item;
+}
+
+::slotted(:not(template):first-of-type) {
+	@apply --csw-group-item-first;
+}
+
+::slotted(:not(template):last-of-type) {
+	@apply --csw-group-item-last;
+}
+
+:host([vertical]) ::slotted(:not(template)) {
+	@apply --csw-group-item-vertical;
+}
+
+:host([vertical]) ::slotted(:not(template):first-of-type) {
+	@apply --csw-group-item-vertical-first;
+}
+
+:host([vertical]) ::slotted(:not(template):last-of-type) {
+	@apply --csw-group-item-vertical-last;
+}

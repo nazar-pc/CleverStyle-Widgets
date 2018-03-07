@@ -1,0 +1,23 @@
+/**
+ * @package CleverStyle Widgets
+ * @author  Nazar Mokrynskyi <nazar@mokrynskyi.com>
+ * @license 0BSD
+ */
+:host {
+	@apply --csw-global;
+	@apply --csw-switcher;
+}
+
+::slotted(:not(template)) {
+	@apply --csw-switcher-block;
+}
+
+::slotted(:not(template):not([active])) {
+	display : none;
+
+	@apply --csw-switcher-block-inactive;
+}
+
+::slotted(:not(template)[active]) {
+	@apply --csw-switcher-block-active;
+}

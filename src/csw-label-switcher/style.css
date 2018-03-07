@@ -1,0 +1,47 @@
+/**
+ * @package CleverStyle Widgets
+ * @author  Nazar Mokrynskyi <nazar@mokrynskyi.com>
+ * @license 0BSD
+ */
+:host {
+	display        : inline-flex;
+	vertical-align : middle;
+}
+
+:host([hidden]) {
+	display : none;
+}
+
+::slotted(label) {
+	border         : none;
+	cursor         : pointer;
+	display        : inline-block;
+	vertical-align : middle;
+
+	@apply --csw-no-selection;
+	@apply --csw-global;
+	@apply --csw-label-switcher;
+}
+
+:host(:active) ::slotted(label),
+:host([active]) ::slotted(label) {
+	@apply --csw-label-switcher-active;
+}
+
+::slotted(label:focus) {
+	outline : none;
+
+	@apply --csw-label-switcher-hover;
+	@apply --csw-label-switcher-focus;
+}
+
+:host(:hover) ::slotted(label) {
+	@apply --csw-label-switcher-hover;
+}
+
+::slotted(label[disabled]) {
+	cursor : not-allowed;
+
+	@apply --csw-label-switcher-disabled;
+
+}

@@ -1,0 +1,17 @@
+custom-style: style.
+	body {
+		@apply --csw-modal-body;
+	}
+
+	body[modal-opened] {
+		overflow : hidden;
+
+		@apply --csw-modal-body-open;
+	}
+dom-module#csw-modal
+	link(href="style.css" rel="import" type="css")
+	template
+		#overlay(on-tap="_overlay_tap")
+		#content
+			slot
+	script(src="script.js")

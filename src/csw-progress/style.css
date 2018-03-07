@@ -1,0 +1,51 @@
+/**
+ * @package CleverStyle Widgets
+ * @author  Nazar Mokrynskyi <nazar@mokrynskyi.com>
+ * @license 0BSD
+ */
+:host {
+	display        : inline-flex;
+	position       : relative;
+	vertical-align : middle;
+}
+
+:host([hidden]) {
+	display : none;
+}
+
+:host([full-width]) {
+	width : 100%;
+}
+
+::slotted(progress) {
+	appearance         : none;
+	-moz-appearance    : none;
+	-webkit-appearance : none;
+	border             : none;
+	display            : inline-block;
+	vertical-align     : middle;
+
+	@apply --csw-no-selection;
+	@apply --csw-global;
+	@apply --csw-button;
+	@apply --csw-button-disabled;
+	@apply --csw-progress;
+}
+
+::slotted(progress[primary]) {
+	@apply --csw-button-primary-disabled;
+	@apply --csw-progress-primary;
+}
+
+#text:not([hidden]) {
+	align-self : center;
+	position   : absolute;
+	text-align : center;
+	width      : 100%;
+
+	@apply --csw-progress-text;
+}
+
+:host([primary]) #text {
+	@apply --csw-progress-text-primary;
+}

@@ -1,0 +1,66 @@
+/**
+ * @package CleverStyle Widgets
+ * @author  Nazar Mokrynskyi <nazar@mokrynskyi.com>
+ * @license 0BSD
+ */
+:host {
+	display        : inline-flex;
+	vertical-align : middle;
+}
+
+:host([hidden]) {
+	display : none;
+}
+
+::slotted(textarea) {
+	background-color : #fff;
+	border           : none;
+	color            : inherit;
+	vertical-align   : middle;
+
+	@apply --csw-global;
+	@apply --csw-input-text;
+	@apply --csw-textarea;
+}
+
+:host([compact]) ::slotted(textarea) {
+	width : auto;
+}
+
+:host([full-width]) ::slotted(textarea) {
+	width : 100%;
+}
+
+::slotted(textarea:active) {
+	@apply --csw-input-text-active;
+	@apply --csw-textarea-active;
+}
+
+::slotted(textarea:focus) {
+	outline : none;
+
+	@apply --csw-input-text-hover;
+	@apply --csw-textarea-hover;
+	@apply --csw-input-text-focus;
+	@apply --csw-textarea-focus;
+}
+
+::slotted(textarea:hover) {
+	@apply --csw-input-text-hover;
+	@apply --csw-textarea-hover;
+}
+
+::slotted(textarea:disabled) {
+	cursor : not-allowed;
+
+	@apply --csw-input-text-disabled;
+	@apply --csw-textarea-disabled;
+}
+
+/* Should be :read-only, but https://bugzilla.mozilla.org/show_bug.cgi?id=312971 */
+::slotted(textarea[readonly]) {
+	cursor : not-allowed;
+
+	@apply --csw-input-text-readonly;
+	@apply --csw-textarea-readonly;
+}

@@ -1,0 +1,17 @@
+<dom-module id="csw-form-styles"><template><style>csw-form legend {
+	@apply --csw-form-legend;
+}
+
+csw-form > form > label:not([is]):not([hidden]) {
+	display : block;
+
+	@apply --csw-form-label;
+}
+
+csw-form > form > label:not([is]):not([hidden]) + * {
+	@apply --csw-form-after-label;
+}
+
+csw-form > form > label:not([is]):not([hidden])[hidden] + * {
+	display : none;
+}</style></template></dom-module><dom-module id="csw-form"><link rel="import" href="style.css" type="css"><template><slot></slot></template><script src="script.js"></script></dom-module>

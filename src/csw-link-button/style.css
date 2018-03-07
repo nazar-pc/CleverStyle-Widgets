@@ -1,0 +1,92 @@
+/**
+ * @package CleverStyle Widgets
+ * @author  Nazar Mokrynskyi <nazar@mokrynskyi.com>
+ * @license 0BSD
+ */
+:host {
+	display        : inline-block;
+	vertical-align : middle;
+}
+
+:host([hidden]) {
+	display : none;
+}
+
+::slotted(a) {
+	border         : none;
+	cursor         : pointer;
+	display        : flex;
+	vertical-align : middle;
+
+	@apply --csw-no-selection;
+	@apply --csw-global;
+	@apply --csw-button;
+	@apply --csw-link-button;
+}
+
+::slotted(a:active),
+:host([active]) ::slotted(button) {
+	@apply --csw-button-active;
+	@apply --csw-link-button-active;
+}
+
+::slotted(a:focus) {
+	outline : none;
+
+	@apply --csw-button-hover;
+	@apply --csw-link-button-hover;
+	@apply --csw-button-focus;
+	@apply --csw-link-button-focus;
+}
+
+::slotted(a:hover) {
+	@apply --csw-button-hover;
+	@apply --csw-link-button-hover;
+}
+
+::slotted(a[disabled]) {
+	cursor : not-allowed;
+
+	@apply --csw-button-disabled;
+	@apply --csw-link-button-disabled;
+}
+
+/* Compact button */
+:host([compact]) ::slotted(a) {
+	@apply --csw-button-compact;
+	@apply --csw-link-button-compact;
+}
+
+/* The only non-default button type is primary button */
+
+:host([primary]) ::slotted(a) {
+	@apply --csw-button-primary;
+	@apply --csw-link-button-primary;
+}
+
+:host([primary]) ::slotted(a:active),
+:host([primary][active]) ::slotted(a) {
+	@apply --csw-button-primary-active;
+	@apply --csw-link-button-primary-active;
+}
+
+:host([primary]) ::slotted(a:focus) {
+	outline : none;
+
+	@apply --csw-button-primary-hover;
+	@apply --csw-link-button-primary-hover;
+	@apply --csw-button-primary-focus;
+	@apply --csw-link-button-primary-focus;
+}
+
+:host([primary]) ::slotted(a:hover) {
+	@apply --csw-button-primary-hover;
+	@apply --csw-link-button-primary-hover;
+}
+
+:host([primary]) ::slotted(a[disabled]) {
+	cursor : not-allowed;
+
+	@apply --csw-button-primary-disabled;
+	@apply --csw-link-button-primary-disabled;
+}

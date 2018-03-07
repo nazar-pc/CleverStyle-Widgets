@@ -1,0 +1,34 @@
+dom-module#csw-progress-styles
+	template
+		style.
+			csw-progress > progress::-webkit-progress-bar {
+				background : inherit;
+			}
+
+			/* Some declarations will be duplicated for each browser, otherwise they fail to apply */
+			csw-progress > progress::-moz-progress-bar {
+				@apply --csw-button;
+				@apply --csw-progress-bar;
+			}
+
+			csw-progress > progress::-webkit-progress-value {
+				@apply --csw-button;
+				@apply --csw-progress-bar;
+			}
+
+			csw-progress[primary] > progress::-moz-progress-bar {
+				@apply --csw-button-primary;
+				@apply --csw-progress-bar-primary;
+			}
+
+			csw-progress[primary] > progress::-webkit-progress-value {
+				@apply --csw-button-primary;
+				@apply --csw-progress-bar-primary;
+			}
+
+dom-module#csw-progress
+	link(rel="import" href="style.css" type="css")
+	template
+		#text(hidden$="[[!textProgress]]") [[value]]%
+		slot
+	script(src="script.js")

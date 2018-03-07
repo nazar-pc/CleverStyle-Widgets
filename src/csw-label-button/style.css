@@ -1,0 +1,100 @@
+/**
+ * @package CleverStyle Widgets
+ * @author  Nazar Mokrynskyi <nazar@mokrynskyi.com>
+ * @license 0BSD
+ */
+:host {
+	display        : inline-flex;
+	vertical-align : middle;
+}
+
+:host([hidden]) {
+	display : none;
+}
+
+::slotted(label) {
+	border : none;
+	cursor : pointer;
+
+	@apply --csw-no-selection;
+	@apply --csw-global;
+	@apply --csw-button;
+	@apply --csw-label-button;
+}
+
+:host([first]) ::slotted(label) {
+	@apply --csw-label-button-first;
+}
+
+:host([last]) ::slotted(label) {
+	@apply --csw-label-button-last;
+}
+
+:host(:active) ::slotted(label),
+:host([active]) ::slotted(label) {
+	@apply --csw-button-active;
+	@apply --csw-label-button-active;
+}
+
+::slotted(label:focus) {
+	outline : none;
+
+	@apply --csw-button-hover;
+	@apply --csw-label-button-hover;
+	@apply --csw-button-focus;
+	@apply --csw-label-button-focus;
+}
+
+::slotted(label:hover) {
+	@apply --csw-button-hover;
+	@apply --csw-label-button-hover;
+}
+
+::slotted(label[disabled]) {
+	cursor : not-allowed;
+
+	@apply --csw-button-disabled;
+	@apply --csw-label-button-disabled;
+}
+
+/** The only non-default button type is primary button */
+
+:host([primary]) ::slotted(label) {
+	@apply --csw-button-primary;
+	@apply --csw-label-button-primary;
+}
+
+:host([primary][first]) ::slotted(label) {
+	@apply --csw-label-button-primary-first;
+}
+
+:host([primary][last]) ::slotted(label) {
+	@apply --csw-label-button-primary-last;
+}
+
+:host([primary]:active) ::slotted(label),
+:host([primary][active]) ::slotted(label) {
+	@apply --csw-button-primary-active;
+	@apply --csw-label-button-primary-active;
+}
+
+:host([primary]) ::slotted(label:focus) {
+	outline : none;
+
+	@apply --csw-button-primary-hover;
+	@apply --csw-label-button-primary-hover;
+	@apply --csw-button-primary-focus;
+	@apply --csw-label-button-primary-focus;
+}
+
+:host([primary]) ::slotted(label:hover) {
+	@apply --csw-button-primary-hover;
+	@apply --csw-label-button-primary-hover;
+}
+
+:host([primary]) ::slotted(label[disabled]) {
+	cursor : not-allowed;
+
+	@apply --csw-button-primary-disabled;
+	@apply --csw-label-button-primary-disabled;
+}

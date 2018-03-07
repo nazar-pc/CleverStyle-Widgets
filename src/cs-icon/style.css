@@ -1,1 +1,0 @@
-:host{color:inherit;display:inline-block;@apply --cs-global;@apply --cs-icon}:host([hidden]),[hidden]{display:none}.fa{vertical-align:middle}.fa-inverse{color:var(--cs-icon-inverse-color)}.fa-stack{font-size:.5em}

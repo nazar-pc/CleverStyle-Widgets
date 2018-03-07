@@ -1,0 +1,25 @@
+<dom-module id="csw-progress-styles"><template><style>csw-progress > progress::-webkit-progress-bar {
+	background : inherit;
+}
+
+/* Some declarations will be duplicated for each browser, otherwise they fail to apply */
+csw-progress > progress::-moz-progress-bar {
+	@apply --csw-button;
+	@apply --csw-progress-bar;
+}
+
+csw-progress > progress::-webkit-progress-value {
+	@apply --csw-button;
+	@apply --csw-progress-bar;
+}
+
+csw-progress[primary] > progress::-moz-progress-bar {
+	@apply --csw-button-primary;
+	@apply --csw-progress-bar-primary;
+}
+
+csw-progress[primary] > progress::-webkit-progress-value {
+	@apply --csw-button-primary;
+	@apply --csw-progress-bar-primary;
+}
+</style></template></dom-module><dom-module id="csw-progress"><link rel="import" href="style.css" type="css"><template><div id="text" hidden$="[[!textProgress]]">[[value]]%</div><slot></slot></template><script src="script.js"></script></dom-module>

@@ -1,9 +1,0 @@
-dom-module#cs-pagination
-	link(rel="import" href="style.css" type="css")
-	template
-		//- If anything was passed here - show as is
-		slot
-		//- Render pages if any
-		template(is="dom-repeat" items="[[_pages_list(page, pages)]]")
-			cs-button(primary="[[item.active]]"): button(type="button" disabled="[[item.disabled]]" on-tap="_set_page" first$="[[item.first]]" last$="[[item.last]]") [[item.text]]
-	script(src="script.js")

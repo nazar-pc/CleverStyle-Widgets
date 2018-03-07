@@ -1,0 +1,31 @@
+/**
+ * @package CleverStyle Widgets
+ * @author  Nazar Mokrynskyi <nazar@mokrynskyi.com>
+ * @license 0BSD
+ */
+:host {
+	display : inline-flex;
+
+	@apply --csw-no-selection;
+	@apply --csw-global;
+	@apply --csw-pagination;
+}
+
+:host([hidden]) {
+	display : none;
+}
+
+::slotted(:not(template)),
+:not(template) {
+	@apply --csw-pagination-button;
+}
+
+::slotted(:not(template):first-of-type),
+:not(template):first-of-type {
+	@apply --csw-pagination-button;
+}
+
+::slotted(:not(template):last-of-type),
+:not(template):last-of-type {
+	@apply --csw-pagination-button;
+}

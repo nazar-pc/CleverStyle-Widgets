@@ -1,0 +1,59 @@
+/**
+ * @package CleverStyle Widgets
+ * @author  Nazar Mokrynskyi <nazar@mokrynskyi.com>
+ * @license 0BSD
+ */
+:host {
+	display        : inline-flex;
+	vertical-align : middle;
+}
+
+:host([hidden]) {
+	display : none;
+}
+
+::slotted(input) {
+	background-color : #fff;
+	border           : none;
+	color            : inherit;
+	vertical-align   : middle;
+
+	@apply --csw-global;
+	@apply --csw-input-text;
+}
+
+:host([compact]) ::slotted(input) {
+	width : auto;
+}
+
+:host([full-width]) ::slotted(input) {
+	width : 100%;
+}
+
+::slotted(input:active) {
+	@apply --csw-input-text-active;
+}
+
+::slotted(input:focus) {
+	outline : none;
+
+	@apply --csw-input-text-hover;
+	@apply --csw-input-text-focus;
+}
+
+::slotted(input:hover) {
+	@apply --csw-input-text-hover;
+}
+
+::slotted(input:disabled) {
+	cursor : not-allowed;
+
+	@apply --csw-input-text-disabled;
+}
+
+/* Should be :read-only, but https://bugzilla.mozilla.org/show_bug.cgi?id=312971 */
+::slotted(input[readonly]) {
+	cursor : not-allowed;
+
+	@apply --csw-input-text-readonly;
+}

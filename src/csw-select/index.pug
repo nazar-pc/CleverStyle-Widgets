@@ -1,0 +1,24 @@
+dom-module#csw-select-styles
+	template
+		style.
+			csw-select > select option {
+				@apply --csw-select-option;
+			}
+
+			csw-select > select option[selected] {
+				@apply --csw-select-option-selected;
+			}
+
+			csw-select > select > optgroup {
+				@apply --csw-select-option;
+				@apply --csw-select-optgroup;
+			}
+
+			csw-select > select > optgroup > option:first-child {
+				@apply --csw-select-optgroup-first-option;
+			}
+dom-module#csw-select
+	link(rel="import" href="style.css" type="css")
+	template
+		slot
+	script(src="script.js")
