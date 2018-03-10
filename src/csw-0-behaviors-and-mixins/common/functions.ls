@@ -31,7 +31,7 @@ csw.functions
 	 * @return {HTMLElement}
 	 */
 	..simple_modal = (content) ->
-		cs.ui.modal(content)
+		csw.functions.modal(content)
 			..autoDestroy	= true
 			..open()
 	/**
@@ -47,7 +47,7 @@ csw.functions
 		if typeof content == 'string' && content.indexOf('<') == -1
 			content = "<h3>#content</h3>"
 		new Promise (resolve) !->
-			modal		= cs.ui.modal(content)
+			modal		= csw.functions.modal(content)
 				..autoDestroy	= true
 				..manualClose	= true
 			ok			= document.createElement('csw-button')
@@ -78,7 +78,7 @@ csw.functions
 			content = content.toString()
 		if typeof content == 'string' && content.indexOf('<') == -1
 			content = "<h3>#content</h3>"
-		modal			= cs.ui.modal(content)
+		modal			= csw.functions.modal(content)
 			..autoDestroy	= true
 			..manualClose	= true
 		ok				= document.createElement('csw-button')
@@ -131,7 +131,7 @@ csw.functions
 			content = content.toString()
 		if typeof content == 'string' && content.indexOf('<') == -1
 			content = "<h3>#content</h3>"
-		modal				= cs.ui.confirm(
+		modal				= csw.functions.confirm(
 			"""
 				#content
 				<p><csw-input-text><input type="text"></csw-input-text></p>

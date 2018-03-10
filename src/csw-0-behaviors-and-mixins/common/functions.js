@@ -38,7 +38,7 @@
    */
   x$.simple_modal = function(content){
     var x$;
-    x$ = cs.ui.modal(content);
+    x$ = csw.functions.modal(content);
     x$.autoDestroy = true;
     x$.open();
     return x$;
@@ -59,7 +59,7 @@
     }
     return new Promise(function(resolve){
       var x$, modal, y$, ok, z$, ok_button, z1$;
-      x$ = modal = cs.ui.modal(content);
+      x$ = modal = csw.functions.modal(content);
       x$.autoDestroy = true;
       x$.manualClose = true;
       y$ = ok = document.createElement('csw-button');
@@ -95,7 +95,7 @@
     if (typeof content === 'string' && content.indexOf('<') === -1) {
       content = "<h3>" + content + "</h3>";
     }
-    x$ = modal = cs.ui.modal(content);
+    x$ = modal = csw.functions.modal(content);
     x$.autoDestroy = true;
     x$.manualClose = true;
     y$ = ok = document.createElement('csw-button');
@@ -158,7 +158,7 @@
     if (typeof content === 'string' && content.indexOf('<') === -1) {
       content = "<h3>" + content + "</h3>";
     }
-    modal = cs.ui.confirm("" + content + "\n<p><csw-input-text><input type=\"text\"></csw-input-text></p>", function(){});
+    modal = csw.functions.confirm("" + content + "\n<p><csw-input-text><input type=\"text\"></csw-input-text></p>", function(){});
     x$ = modal.input = modal.querySelector('input');
     x$.focus();
     input = modal.input, ok = modal.ok, cancel = modal.cancel;
