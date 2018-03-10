@@ -13,7 +13,7 @@ npm install cleverstyle-widgets
 ## How to use
 1. Include Polymer on your page (only Polymer 2.x is supported, legacy `window.Polymer` is used) alongside with WebComponents polyfill with Shady DOM/CSS support (`webcomponents-hi-sd-ce.js` in order to support all major modern browsers)
 2. Include either `src/index.html` for using all components or pick relevant collection of separate components from `src` (make sure to include necessary bits from `src/csw-0-behaviors-and-mixins` too)
-3. Look at [API](https://github.com/nazar-pc/CleverStyle-Widgets/blob/master/api.md) for available options and usage examples
+3. Look at [API](https://github.com/nazar-pc/CleverStyle-Widgets/blob/master/api.md) for available elements and functions, their options and usage examples
 4. Configure appearance as you like using [CleverStyle](https://github.com/nazar-pc/CleverStyle-Framework/blob/master/themes/CleverStyle/html/widgets%20styling.html) and [DarkEnergy](https://github.com/nazar-pc/CleverStyle-Framework/blob/master/themes/DarkEnergy/html/widgets%20styling.html) themes as an example (you can find all of the mixins that are current supported in source code), see [screenshots](https://github.com/nazar-pc/CleverStyle-Widgets/tree/master/screenshots) for example of how components might look
 
 ## Contribution

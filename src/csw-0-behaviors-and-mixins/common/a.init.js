@@ -5,6 +5,7 @@
  * @license 0BSD
  */
 (function(){
-  var ref$;
-  (ref$ = window.csw || (window.csw = {})).behaviors || (ref$.behaviors = {});
+  window.csw || (window.csw = {});
+  csw.behaviors || (csw.behaviors = {});
+  csw.functions || (csw.functions = {});
 }).call(this);

@@ -4,4 +4,6 @@
  * @license 0BSD
  */
 # Just make sure objects exist
-window.{}csw.{}behaviors
+window.{}csw
+csw.{}behaviors
+csw.{}functions

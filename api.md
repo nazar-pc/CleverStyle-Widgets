@@ -18,6 +18,14 @@ CleverStyle Widgets includes following elements:
 * `csw-textarea`
 * `csw-tooltip`
 
+And following helper functions:
+* `csw.functions.modal()`
+* `csw.functions.simple_modal()`
+* `csw.functions.alert()`
+* `csw.functions.confirm()`
+* `csw.functions.prompt()`
+* `csw.functions.notify()`
+
 #### csw-button
 Wrapper element for native `button` element.
 
@@ -401,3 +409,39 @@ Examples:
     </button>
 </csw-button>
 ```
+
+#### csw.functions.modal(content : HTMLElement|jQuery|String) : HTMLElement
+Generic interface for creating modal from string or element as its content.
+Modal element will be attached to `document.documentElement` and returned.
+
+#### csw.functions.simple_modal(content : HTMLElement|jQuery|String) : HTMLElement
+Even simpler interface for creating modal from string or element as its content.
+Modal will be opened right after creation and destroyed when closed.
+Modal element will be attached to `document.documentElement` and returned.
+
+#### csw.functions.alert(content : HTMLElement|jQuery|String) : Promise
+Interface for creating modal from string or element as its content specifically for replacing default `window.alert()` method.
+Modal will be opened right after creation and destroyed when closed, also will have "OK" button which is focused automatically.
+Modal element will be attached to `document.documentElement` and returned.
+
+#### csw.functions.confirm(content : HTMLElement|jQuery|String, ok_callback : Function [, cancel_callback : Function]) : HTMLElement|Promise
+Interface for creating modal from string or element as its content specifically for replacing default `window.confirm()` method.
+Modal will be opened right after creation and destroyed when closed, also will have "OK" and "Cancel" buttons, "OK" is focused automatically.
+Depending on button clicked `ok_callback` or `cancel_callback` will be called.
+Modal element will be attached to `document.documentElement` and returned (if `ok_callback` not specified then `Promise` will be returned instead).
+
+#### csw.functions.prompt(content : HTMLElement|jQuery|String, ok_callback : Function [, cancel_callback : Function]) : HTMLElement|Promise
+Interface for creating modal from string or element as its content specifically for replacing default `window.prompt()` method.
+Modal will be opened right after creation and destroyed when closed, also will have text input field, "OK" and "Cancel" buttons, text input field is focused automatically.
+Depending on button clicked `ok_callback` or `cancel_callback` will be called.
+Modal element will be attached to `document.documentElement` and returned (if `ok_callback` not specified then `Promise` will be returned instead).
+
+#### csw.functions.notify(content : HTMLElement|jQuery|String [, delay : Number][, type : String]]) : HTMLElement
+Interface for creating notifications from string or element as its content.
+`delay` and `type` arguments are both optional and can go in any order.
+`delay` is number in seconds after which notification will be closed automatically (assumed 0 by default, namely shown until closed manually).
+`type` is used to change notification appearance (by default generic appearance is used), one of:
+* `success`
+* `warning`
+* `error`
+Notification element will be attached to `document.documentElement` and returned.
