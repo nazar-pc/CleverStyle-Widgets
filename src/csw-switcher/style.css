@@ -4,6 +4,8 @@
  * @license 0BSD
  */
 :host {
+	display : block;
+
 	@apply --csw-global;
 	@apply --csw-switcher;
 }
