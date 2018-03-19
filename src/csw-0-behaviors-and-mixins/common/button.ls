@@ -9,6 +9,9 @@ csw.behaviors.button =
 			notify				: true
 			reflectToAttribute	: true
 			type				: Boolean
+		empty		:
+			reflectToAttribute	: true
+			type				: Boolean
 		icon-before	:
 			type				: String
 		icon-after	:
@@ -19,6 +22,7 @@ csw.behaviors.button =
 			reflectToAttribute	: true
 			type				: Boolean
 	ready : !->
+		@empty	= !@firstElementChild.childNodes.length
 		icon-before	= @icon-before || @icon
 		if icon-before
 			@firstElementChild.insertAdjacentHTML(
@@ -28,5 +32,5 @@ csw.behaviors.button =
 		if @icon-after
 			@firstElementChild.insertAdjacentHTML(
 				'beforeend'
-				"""<csw-icon icon="#{@icon-after}" mono></csw-icon> """
+				""" <csw-icon icon="#{@icon-after}" mono></csw-icon>"""
 			)

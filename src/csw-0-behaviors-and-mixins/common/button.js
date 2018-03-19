@@ -12,6 +12,10 @@
         reflectToAttribute: true,
         type: Boolean
       },
+      empty: {
+        reflectToAttribute: true,
+        type: Boolean
+      },
       iconBefore: {
         type: String
       },
@@ -28,12 +32,13 @@
     },
     ready: function(){
       var iconBefore;
+      this.empty = !this.firstElementChild.childNodes.length;
       iconBefore = this.iconBefore || this.icon;
       if (iconBefore) {
         this.firstElementChild.insertAdjacentHTML('afterbegin', "<csw-icon icon=\"" + iconBefore + "\" mono></csw-icon> ");
       }
       if (this.iconAfter) {
-        this.firstElementChild.insertAdjacentHTML('beforeend', "<csw-icon icon=\"" + this.iconAfter + "\" mono></csw-icon> ");
+        this.firstElementChild.insertAdjacentHTML('beforeend', " <csw-icon icon=\"" + this.iconAfter + "\" mono></csw-icon>");
       }
     }
   };

@@ -13,16 +13,19 @@
 }
 
 ::slotted(button) {
-	align-items     : center;
-	border          : none;
-	cursor          : pointer;
-	display         : flex;
-	justify-content : center;
-	width           : 100%;
+	border : none;
+	cursor : pointer;
+	width  : 100%;
 
 	@apply --csw-no-selection;
 	@apply --csw-global;
 	@apply --csw-button;
+}
+
+:host([empty]) ::slotted(button) {
+	align-items     : center;
+	display         : flex;
+	justify-content : center;
 }
 
 ::slotted(button:active),

@@ -42,12 +42,11 @@
 	@apply --csw-notify-content-error;
 }
 
-csw-icon {
+:host([no-icon]) csw-icon {
 	display : none;
 }
 
 :host(:not([no-icon])) csw-icon {
-	display  : inline-block;
 	position : absolute;
 
 	@apply --csw-notify-icon;
