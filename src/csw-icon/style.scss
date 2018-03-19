@@ -4,8 +4,10 @@
  * @license 0BSD
  */
 :host {
-	color   : inherit;
-	display : inline-block;
+	align-items     : center;
+	color           : inherit;
+	display         : inline-flex;
+	justify-content : center;
 
 	@apply --csw-global;
 	@apply --csw-icon;
@@ -14,10 +16,6 @@
 :host([hidden]),
 [hidden] {
 	display : none;
-}
-
-.fa {
-	vertical-align : middle;
 }
 
 .fa-inverse {

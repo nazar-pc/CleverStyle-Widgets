@@ -4,8 +4,7 @@
  * @license 0BSD
  */
 :host {
-	display        : inline-flex;
-	vertical-align : middle;
+	display : inline-flex;
 
 	@apply --csw-no-selection;
 	@apply --csw-global;

@@ -4,7 +4,7 @@
  * @license 0BSD
  */
 :host {
-	display        : inline-flex;
+	display        : inline-block;
 	vertical-align : middle;
 }
 

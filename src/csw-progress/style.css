@@ -4,6 +4,7 @@
  * @license 0BSD
  */
 :host {
+	align-items    : center;
 	display        : inline-flex;
 	position       : relative;
 	vertical-align : middle;
@@ -23,7 +24,6 @@
 	-webkit-appearance : none;
 	border             : none;
 	display            : inline-block;
-	vertical-align     : middle;
 
 	@apply --csw-no-selection;
 	@apply --csw-global;
@@ -38,7 +38,6 @@
 }
 
 #text:not([hidden]) {
-	align-self : center;
 	position   : absolute;
 	text-align : center;
 	width      : 100%;

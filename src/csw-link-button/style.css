@@ -13,10 +13,12 @@
 }
 
 ::slotted(a) {
-	border         : none;
-	cursor         : pointer;
-	display        : flex;
-	vertical-align : middle;
+	align-items     : center;
+	border          : none;
+	cursor          : pointer;
+	display         : flex;
+	justify-content : center;
+	width           : 100%;
 
 	@apply --csw-no-selection;
 	@apply --csw-global;

@@ -4,7 +4,7 @@
  * @license 0BSD
  */
 :host {
-	display        : inline-flex;
+	display        : inline-block;
 	vertical-align : middle;
 }
 
@@ -16,7 +16,6 @@
 	background-color : #fff;
 	border           : none;
 	color            : inherit;
-	vertical-align   : middle;
 
 	@apply --csw-global;
 	@apply --csw-input-text;

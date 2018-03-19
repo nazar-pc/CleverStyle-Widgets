@@ -4,7 +4,7 @@
  * @license 0BSD
  */
 :host {
-	display        : inline-flex;
+	display        : inline-block;
 	vertical-align : middle;
 }
 
@@ -13,10 +13,10 @@
 }
 
 ::slotted(label) {
-	border         : none;
-	cursor         : pointer;
-	display        : inline-block;
-	vertical-align : middle;
+	align-items : center;
+	border      : none;
+	cursor      : pointer;
+	display     : inline-flex;
 
 	@apply --csw-no-selection;
 	@apply --csw-global;
