@@ -119,5 +119,5 @@ csw.behaviors.csw-notify	= [
 		if transition-duration.substr(-2) == 'ms'
 			parseFloat(transition-duration)
 		else
-			transition-duration	= parseFloat(transition-duration) * 1000
+			parseFloat(transition-duration) * 1000
 ]

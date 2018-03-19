@@ -152,7 +152,7 @@
         if (transitionDuration.substr(-2) === 'ms') {
           return parseFloat(transitionDuration);
         } else {
-          return transitionDuration = parseFloat(transitionDuration) * 1000;
+          return parseFloat(transitionDuration) * 1000;
         }
       }
     }
