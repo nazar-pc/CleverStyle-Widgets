@@ -8,6 +8,10 @@ csw-form > form > label:not([is]):not([hidden]) {
 	@apply --csw-form-label;
 }
 
+csw-form > form > label:not([is]):not([hidden]) > * {
+	@apply --csw-form-within-label;
+}
+
 csw-form > form > label:not([is]):not([hidden]) + * {
 	@apply --csw-form-after-label;
 }
