@@ -51,6 +51,14 @@
 		top    : auto;
 
 		@apply --csw-tooltip-arrow-top;
+
+		&:before {
+			@apply --csw-tooltip-arrow-top-before;
+		}
+
+		&:after {
+			@apply --csw-tooltip-arrow-top-after;
+		}
 	}
 
 	&:before {
