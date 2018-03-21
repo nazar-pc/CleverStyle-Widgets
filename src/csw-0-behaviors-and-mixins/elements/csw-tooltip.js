@@ -83,6 +83,7 @@
       _get_tooltip_position: function(element){
         var tooltip_size, element_position, tooltip_position, client_width, left_offset;
         this.showQuick = true;
+        Polymer.flush();
         tooltip_size = this.getBoundingClientRect();
         element_position = element.getBoundingClientRect();
         tooltip_position = {

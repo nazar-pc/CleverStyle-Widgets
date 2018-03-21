@@ -10,7 +10,7 @@ csw.behaviors.csw-tooltip	= [
 		show		:
 			reflectToAttribute	: true
 			type				: Boolean
-		showQuick	:
+		show-quick	:
 			reflectToAttribute	: true
 			type				: Boolean
 		top			:
@@ -58,7 +58,9 @@ csw.behaviors.csw-tooltip	= [
 		if @show
 			@show	= false
 	_get_tooltip_position : (element) ->
-		@showQuick			= true
+		@show-quick			= true
+		# Without Polymer.flush() content might not happen in tooltip yet, property might not be configured and as the result position will be incorrect
+		Polymer.flush()
 		tooltip_size		= @getBoundingClientRect()
 		element_position	= element.getBoundingClientRect()
 		tooltip_position	=
@@ -67,7 +69,7 @@ csw.behaviors.csw-tooltip	= [
 			arrow_top			: false
 			arrow_left_offset	: 0
 		client_width		= html.clientWidth
-		@showQuick			= false
+		@show-quick			= false
 		# Calculation of vertical position
 		if element_position.top > tooltip_size.height
 			tooltip_position.top	+= element_position.top - tooltip_size.height
