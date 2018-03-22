@@ -94,8 +94,6 @@ csw.behaviors.csw-notify	= [
 			if (
 				child != @ &&
 				child.is == @is &&
-				child.show &&
-				child.tagName == tagName &&
 				child.bottom == bottom &&
 				child.left == left &&
 				child.right == right &&
@@ -105,15 +103,15 @@ csw.behaviors.csw-notify	= [
 	_shift : !->
 		style = getComputedStyle(@)
 		if @top
-			@style.marginTop = parseFloat(style.marginTop) + parseFloat(style.height) + 'px'
+			@style.marginTop = parseFloat(@style.marginTop || 0) + parseFloat(style.height) + 'px'
 		else
-			@style.marginBottom = parseFloat(style.marginBottom) + parseFloat(style.height) + 'px'
+			@style.marginBottom = parseFloat(@style.marginBottom || 0) + parseFloat(style.height) + 'px'
 	_unshift : !->
 		style = getComputedStyle(@)
 		if @top
-			@style.marginTop = parseFloat(style.marginTop) - parseFloat(style.height) + 'px'
+			@style.marginTop = parseFloat(@style.marginTop || 0) - parseFloat(style.height) + 'px'
 		else
-			@style.marginBottom = parseFloat(style.marginBottom) - parseFloat(style.height) + 'px'
+			@style.marginBottom = parseFloat(@style.marginBottom || 0) - parseFloat(style.height) + 'px'
 	_transition_duration : ->
 		transition-duration = getComputedStyle(@).transition-duration
 		if transition-duration.substr(-2) == 'ms'

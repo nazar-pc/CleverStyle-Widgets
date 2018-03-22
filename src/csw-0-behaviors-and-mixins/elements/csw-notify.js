@@ -123,7 +123,7 @@
         top = this.top;
         for (i$ = 0, len$ = (ref$ = document.querySelector('html').children).length; i$ < len$; ++i$) {
           child = ref$[i$];
-          if (child !== this && child.is === this.is && child.show && child.tagName === tagName && child.bottom === bottom && child.left === left && child.right === right && child.top === top) {
+          if (child !== this && child.is === this.is && child.bottom === bottom && child.left === left && child.right === right && child.top === top) {
             callback(child);
           }
         }
@@ -132,18 +132,18 @@
         var style;
         style = getComputedStyle(this);
         if (this.top) {
-          this.style.marginTop = parseFloat(style.marginTop) + parseFloat(style.height) + 'px';
+          this.style.marginTop = parseFloat(this.style.marginTop || 0) + parseFloat(style.height) + 'px';
         } else {
-          this.style.marginBottom = parseFloat(style.marginBottom) + parseFloat(style.height) + 'px';
+          this.style.marginBottom = parseFloat(this.style.marginBottom || 0) + parseFloat(style.height) + 'px';
         }
       },
       _unshift: function(){
         var style;
         style = getComputedStyle(this);
         if (this.top) {
-          this.style.marginTop = parseFloat(style.marginTop) - parseFloat(style.height) + 'px';
+          this.style.marginTop = parseFloat(this.style.marginTop || 0) - parseFloat(style.height) + 'px';
         } else {
-          this.style.marginBottom = parseFloat(style.marginBottom) - parseFloat(style.height) + 'px';
+          this.style.marginBottom = parseFloat(this.style.marginBottom || 0) - parseFloat(style.height) + 'px';
         }
       },
       _transition_duration: function(){
