@@ -8,14 +8,14 @@
   var ready, styles;
   ready = new Promise(function(resolve){
     var callback;
-    if (document.readyState !== 'complete') {
+    if (window.WebComponents && window.WebComponents.ready) {
+      setTimeout(resolve);
+    } else {
       callback = function(){
         setTimeout(resolve);
         document.removeEventListener('WebComponentsReady', callback);
       };
       document.addEventListener('WebComponentsReady', callback);
-    } else {
-      setTimeout(resolve);
     }
   });
   styles = {};

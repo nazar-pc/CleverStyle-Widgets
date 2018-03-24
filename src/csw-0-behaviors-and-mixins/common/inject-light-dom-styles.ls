@@ -4,13 +4,13 @@
  * @license   0BSD
  */
 ready								= new Promise (resolve) !->
-	if document.readyState != 'complete'
+	if window.WebComponents && window.WebComponents.ready
+		setTimeout(resolve)
+	else
 		callback	= !->
 			setTimeout(resolve)
 			document.removeEventListener('WebComponentsReady', callback)
 		document.addEventListener('WebComponentsReady', callback)
-	else
-		setTimeout(resolve)
 styles								= {}
 csw.behaviors.inject-light-styles	= [
 	attached : !->
