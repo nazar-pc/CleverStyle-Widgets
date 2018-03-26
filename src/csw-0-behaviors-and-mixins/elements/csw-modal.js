@@ -5,9 +5,6 @@
  * @license 0BSD
  */
 (function(){
-  var body, html;
-  body = document.body;
-  html = document.documentElement;
   csw.behaviors.cswModal = [
     csw.behaviors['this'], {
       properties: {
@@ -59,15 +56,16 @@
         }
       },
       _opened_changed: function(opened){
-        var ref$, this$ = this;
+        var ref$, body, this$ = this;
         if (opened === undefined) {
           return;
         }
         if (!((ref$ = this.parentNode) != null && ref$.matches('html'))) {
-          html.appendChild(this);
+          document.documentElement.appendChild(this);
         }
         this.distributeContent(true);
         Polymer.dom.flush();
+        body = document.body;
         body.modalOpened = body.modalOpened || 0;
         if (opened) {
           document.addEventListener('keydown', this._esc_handler);
@@ -77,7 +75,7 @@
           }
           ++body.modalOpened;
           this.fire('open');
-          document.body.setAttribute('modal-opened', '');
+          body.setAttribute('modal-opened', '');
           setTimeout(function(){
             this$.setAttribute('opened', '');
           }, 100);
@@ -87,7 +85,7 @@
           this.fire('close');
           this.removeAttribute('opened');
           if (!body.modalOpened) {
-            document.body.removeAttribute('modal-opened');
+            body.removeAttribute('modal-opened');
           }
         }
       },

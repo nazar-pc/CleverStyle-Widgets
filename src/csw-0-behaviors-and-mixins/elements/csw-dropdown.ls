@@ -3,7 +3,6 @@
  * @author  Nazar Mokrynskyi <nazar@mokrynskyi.com>
  * @license 0BSD
  */
-html						= document.documentElement
 csw.behaviors.csw-dropdown	= [
 	hostAttributes	:
 		role	: 'group'
@@ -43,7 +42,7 @@ csw.behaviors.csw-dropdown	= [
 		if @align == 'left'
 			@style.left = target_position.left + 'px'
 		else
-			@style.right = (html.clientWidth - target_position.right - scrollX) + 'px'
+			@style.right = (document.documentElement.clientWidth - target_position.right - scrollX) + 'px'
 		@style.top	= target_position.top + target_position.height + 'px'
 		@opened		= true
 		@fire('open')

@@ -5,8 +5,6 @@
  * @license 0BSD
  */
 (function(){
-  var html;
-  html = document.documentElement;
   csw.behaviors.cswTooltip = [
     csw.behaviors.tooltip, {
       properties: {
@@ -92,7 +90,7 @@
           arrow_top: false,
           arrow_left_offset: 0
         };
-        client_width = html.clientWidth;
+        client_width = document.documentElement.clientWidth;
         this.showQuick = false;
         if (element_position.top > tooltip_size.height) {
           tooltip_position.top += element_position.top - tooltip_size.height;

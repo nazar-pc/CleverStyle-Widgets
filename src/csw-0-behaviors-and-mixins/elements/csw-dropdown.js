@@ -5,8 +5,6 @@
  * @license 0BSD
  */
 (function(){
-  var html;
-  html = document.documentElement;
   csw.behaviors.cswDropdown = [{
     hostAttributes: {
       role: 'group'
@@ -62,7 +60,7 @@
       if (this.align === 'left') {
         this.style.left = target_position.left + 'px';
       } else {
-        this.style.right = (html.clientWidth - target_position.right - scrollX) + 'px';
+        this.style.right = (document.documentElement.clientWidth - target_position.right - scrollX) + 'px';
       }
       this.style.top = target_position.top + target_position.height + 'px';
       this.opened = true;

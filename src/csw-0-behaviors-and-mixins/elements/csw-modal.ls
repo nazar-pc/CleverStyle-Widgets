@@ -3,8 +3,6 @@
  * @author  Nazar Mokrynskyi <nazar@mokrynskyi.com>
  * @license 0BSD
  */
-body					= document.body
-html					= document.documentElement
 csw.behaviors.csw-modal	= [
 	csw.behaviors.this
 	properties	:
@@ -42,11 +40,12 @@ csw.behaviors.csw-modal	= [
 		if opened == undefined
 			return
 		if !@parentNode?.matches('html')
-			html.appendChild(@)
+			document.documentElement.appendChild(@)
 		# Hack to make modal opening really smooth
 		@distributeContent(true)
 		Polymer.dom.flush()
-		body.modalOpened = body.modalOpened || 0
+		body				= document.body
+		body.modalOpened	= body.modalOpened || 0
 		if opened
 			document.addEventListener('keydown', @_esc_handler)
 			# Actually insert content only when needed
@@ -56,7 +55,7 @@ csw.behaviors.csw-modal	= [
 				@content	= null
 			++body.modalOpened
 			@fire('open')
-			document.body.setAttribute('modal-opened', '')
+			body.setAttribute('modal-opened', '')
 			setTimeout (!~>
 				@setAttribute('opened', '')
 			), 100
@@ -66,7 +65,7 @@ csw.behaviors.csw-modal	= [
 			@fire('close')
 			@removeAttribute('opened')
 			if !body.modalOpened
-				document.body.removeAttribute('modal-opened')
+				body.removeAttribute('modal-opened')
 	open : ->
 		if !@opened
 			@opened = true

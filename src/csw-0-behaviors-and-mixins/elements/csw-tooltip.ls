@@ -3,7 +3,6 @@
  * @author  Nazar Mokrynskyi <nazar@mokrynskyi.com>
  * @license 0BSD
  */
-html						= document.documentElement
 csw.behaviors.csw-tooltip	= [
 	csw.behaviors.tooltip
 	properties	:
@@ -68,7 +67,7 @@ csw.behaviors.csw-tooltip	= [
 			left				: scrollX
 			arrow_top			: false
 			arrow_left_offset	: 0
-		client_width		= html.clientWidth
+		client_width		= document.documentElement.clientWidth
 		@show-quick			= false
 		# Calculation of vertical position
 		if element_position.top > tooltip_size.height
