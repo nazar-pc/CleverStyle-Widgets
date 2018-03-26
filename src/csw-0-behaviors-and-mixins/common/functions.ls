@@ -84,19 +84,17 @@ csw.functions
 		ok				= document.createElement('csw-button')
 			..innerHTML	= '<button>OK</button>'
 			..primary	= true
-			..action	= 'close'
-			..bind		= modal
 		ok_button		= ok.firstElementChild
 			..addEventListener('click', !->
 				ok_callback?()
+				modal.close()
 			)
 		cancel			= document.createElement('csw-button')
 			..innerHTML	= '<button>Cancel</button>'
-			..action	= 'close'
-			..bind		= modal
 		cancel_button	= cancel.firstElementChild
 			..addEventListener('click', !->
 				cancel_callback?()
+				modal.close()
 			)
 		modal
 			..ok		= ok_button
@@ -111,9 +109,11 @@ csw.functions
 			new Promise (resolve, reject) !->
 				ok_button.addEventListener('click', !->
 					resolve()
+					modal.close()
 				)
 				cancel_button.addEventListener('click', !->
 					reject()
+					modal.close()
 				)
 	/**
 	 * Prompt modal

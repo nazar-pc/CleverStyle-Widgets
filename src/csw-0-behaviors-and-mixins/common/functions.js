@@ -101,23 +101,21 @@
     y$ = ok = document.createElement('csw-button');
     y$.innerHTML = '<button>OK</button>';
     y$.primary = true;
-    y$.action = 'close';
-    y$.bind = modal;
     z$ = ok_button = ok.firstElementChild;
     z$.addEventListener('click', function(){
       if (typeof ok_callback == 'function') {
         ok_callback();
       }
+      modal.close();
     });
     z1$ = cancel = document.createElement('csw-button');
     z1$.innerHTML = '<button>Cancel</button>';
-    z1$.action = 'close';
-    z1$.bind = modal;
     z2$ = cancel_button = cancel.firstElementChild;
     z2$.addEventListener('click', function(){
       if (typeof cancel_callback == 'function') {
         cancel_callback();
       }
+      modal.close();
     });
     z3$ = modal;
     z3$.ok = ok_button;
@@ -132,9 +130,11 @@
       return new Promise(function(resolve, reject){
         ok_button.addEventListener('click', function(){
           resolve();
+          modal.close();
         });
         cancel_button.addEventListener('click', function(){
           reject();
+          modal.close();
         });
       });
     }
