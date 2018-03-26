@@ -23,7 +23,7 @@
 		"textarea",
 		"tooltip"
 	],
-	"version"      : "0.7.3",
+	"version"      : "0.7.4",
 	"homepage"     : "https://github.com/nazar-pc/CleverStyle-Widgets",
 	"author"       : "Nazar Mokrynskyi <nazar@mokrynskyi.com>",
 	"repository"   : {
