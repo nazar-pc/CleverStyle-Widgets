@@ -98,6 +98,7 @@ csw.behaviors.csw-notify	= [
 				child.left == left &&
 				child.right == right &&
 				child.top == top
+				child.show
 			)
 				callback(child)
 	_shift : !->

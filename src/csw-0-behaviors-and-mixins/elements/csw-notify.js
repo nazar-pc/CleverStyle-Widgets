@@ -123,7 +123,7 @@
         top = this.top;
         for (i$ = 0, len$ = (ref$ = document.querySelector('html').children).length; i$ < len$; ++i$) {
           child = ref$[i$];
-          if (child !== this && child.is === this.is && child.bottom === bottom && child.left === left && child.right === right && child.top === top) {
+          if (child !== this && child.is === this.is && child.bottom === bottom && child.left === left && child.right === right && child.top === top, child.show) {
             callback(child);
           }
         }
