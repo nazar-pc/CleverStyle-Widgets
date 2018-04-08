@@ -173,11 +173,12 @@ csw.functions
 				content.appendTo(notify)
 			else
 				notify.appendChild(content)
+		notify.no-icon	= true
 		for option in options
 			switch typeof option
 				when 'string'
 					notify[option] = true
 				when 'number'
 					notify.timeout = option
-		document.documentElement.appendChild(notify)
+		document.documentElement.insertBefore(notify, document.querySelector(notify.is))
 		notify

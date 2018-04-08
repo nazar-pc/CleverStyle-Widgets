@@ -5,114 +5,109 @@
  */
 # Chain of promises is used to show/hide notifications sequentially, variable contains always latest promise in chain and is constantly updated
 # We'll start doing something only when Web Components are ready
-promise					= new Promise(csw.behaviors.ready._when_ready)
+promise						= new Promise(csw.behaviors.ready._when_ready)
 csw.behaviors.csw-notify	= [
 	csw.behaviors.ready
 	properties	:
-		bottom	:
+		bottom		:
 			reflectToAttribute	: true
 			type				: Boolean
-		content	: String
-		error	:
+		content		: String
+		error		:
 			reflectToAttribute	: true
 			type				: Boolean
-		left	:
+		left		:
 			reflectToAttribute	: true
 			type				: Boolean
-		noIcon	:
+		no-icon		:
 			reflectToAttribute	: true
 			type				: Boolean
-		right	:
+		right		:
 			reflectToAttribute	: true
 			type				: Boolean
-		show	:
+		selectable	:
 			reflectToAttribute	: true
 			type				: Boolean
-		success	:
+		show		:
 			reflectToAttribute	: true
 			type				: Boolean
-		timeout	: Number
-		top		:
+		success		:
 			reflectToAttribute	: true
 			type				: Boolean
-		warning	:
+		timeout		: Number
+		top			:
+			reflectToAttribute	: true
+			type				: Boolean
+		warning		:
 			reflectToAttribute	: true
 			type				: Boolean
 	attached : !->
 		@last_node = @parentNode
 		if !@parentNode.matches('html')
-			document.documentElement.appendChild(@)
+			document.documentElement.insertBefore(@, document.querySelector(@is))
 			return
 		if !@bottom && !@top
 			@top	= true
-		setTimeout(@~_show)
+		# Hack: Force layout
+		@offsetLeft
+		@_show()
 	_tap : (e) !->
-		if e.target == @$.content || e.target == @$.icon
+		if !@selectable || e.target == @$.content || e.target == @$.icon
 			@_hide()
 	_show : !->
 		promise := promise.then ~>
 			if @content
 				@innerHTML = @content
-			@_for_similar (child) !~>
-				interesting_margin	= if @top then 'marginTop' else 'marginBottom'
-				if (
-					child != @ &&
-					parseFloat(child.style[interesting_margin] || 0) >= parseFloat(@style[interesting_margin] || 0)
-				)
-					child._shift()
-			@_initialized	= true
-			@show			= true
+			@show	= true
+			@_update_position()
 			@fire('show')
 			new Promise (resolve) !~>
 				setTimeout (!~>
 					if @timeout
-						setTimeout(@~_hide, @timeout * 1000)
+						setTimeout(@_hide.bind(@), @timeout * 1000)
 					resolve()
 				), @_transition_duration()
 	_hide : !->
 		promise := promise.then ~>
-			@show				= false
-			interesting_margin	= if @top then 'marginTop' else 'marginBottom'
-			@_for_similar (child) !~>
-				if (
-					parseFloat(child.style[interesting_margin] || 0) > parseFloat(@style[interesting_margin] || 0)
-				)
-					child._unshift()
+			@show	= false
+			@_update_position()
 			@fire('hide')
 			new Promise (resolve) !~>
 				setTimeout (!~>
 					@parentNode?.removeChild(@)
 					resolve()
 				), @_transition_duration()
-	_for_similar : (callback) !->
-		tagName	= @tagName
-		bottom	= @bottom
-		left	= @left
-		right	= @right
-		top		= @top
-		for child in document.querySelector('html').children
-			if (
-				child != @ &&
-				child.is == @is &&
-				child.bottom == bottom &&
-				child.left == left &&
-				child.right == right &&
-				child.top == top
-				child.show
-			)
-				callback(child)
-	_shift : !->
-		style = getComputedStyle(@)
-		if @top
-			@style.marginTop = parseFloat(@style.marginTop || 0) + parseFloat(style.height) + 'px'
+	_get_similar : ->
+		_is			= @is
+		bottom		= @bottom
+		left		= @left
+		right		= @right
+		top			= @top
+		Array.from(document.querySelector('html').children).filter (element) ~>
+			element.is == _is &&
+			element.bottom == bottom &&
+			element.left == left &&
+			element.right == right &&
+			element.top == top &&
+			element.show
+	_update_position : (callback) !->
+		children	= @_get_similar()
+		for current, i in children
+			previous	= children[i - 1]
+			current._update_own_position(previous)
+	_update_own_position : (previous) !->
+		if previous
+			previous_bottom	= parseFloat(previous.style.marginBottom || 0)
+			previous_height	= parseFloat(getComputedStyle(previous).height)
+			previous_top	= parseFloat(previous.style.marginTop || 0)
 		else
-			@style.marginBottom = parseFloat(@style.marginBottom || 0) + parseFloat(style.height) + 'px'
-	_unshift : !->
-		style = getComputedStyle(@)
+			previous_bottom	= 0
+			previous_height	= 0
+			previous_top	= 0
 		if @top
-			@style.marginTop = parseFloat(@style.marginTop || 0) - parseFloat(style.height) + 'px'
+			@style.marginTop = previous_top + previous_height + 'px'
 		else
-			@style.marginBottom = parseFloat(@style.marginBottom || 0) - parseFloat(style.height) + 'px'
+			@style.marginBottom = previous_bottom + previous_height + 'px'
 	_transition_duration : ->
 		transition-duration = getComputedStyle(@).transition-duration
 		if transition-duration.substr(-2) == 'ms'

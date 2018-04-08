@@ -207,6 +207,7 @@
         notify.appendChild(content);
       }
     }
+    notify.noIcon = true;
     for (i$ = 0, len$ = options.length; i$ < len$; ++i$) {
       option = options[i$];
       switch (typeof option) {
@@ -217,7 +218,7 @@
         notify.timeout = option;
       }
     }
-    document.documentElement.appendChild(notify);
+    document.documentElement.insertBefore(notify, document.querySelector(notify.is));
     return notify;
   };
 }).call(this);

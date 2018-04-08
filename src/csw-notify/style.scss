@@ -13,6 +13,10 @@
 	@apply --csw-notify;
 }
 
+:host(:not([selectable])) {
+	cursor : pointer;
+}
+
 #content {
 	display     : inline-block;
 	margin-left : -50%;

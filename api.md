@@ -255,6 +255,7 @@ Attributes (also available as properties, so use whatever is more convenient):
 * left - boolean, place notification on the left
 * no-icon - boolean, allows to remove close button (shown by default)
 * right - boolean, place notification on the right
+* selectable - boolean, allow contents selection
 * success - boolean, apply success appearance
 * timeout - number, if specified then will be closed after specified number of seconds (0 by default, which means never close automatically)
 * top - boolean, whether element is located at top of the page (used by default if `bottom` not specified)

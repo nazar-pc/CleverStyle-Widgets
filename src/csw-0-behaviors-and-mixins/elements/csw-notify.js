@@ -31,6 +31,10 @@
           reflectToAttribute: true,
           type: Boolean
         },
+        selectable: {
+          reflectToAttribute: true,
+          type: Boolean
+        },
         show: {
           reflectToAttribute: true,
           type: Boolean
@@ -52,16 +56,17 @@
       attached: function(){
         this.last_node = this.parentNode;
         if (!this.parentNode.matches('html')) {
-          document.documentElement.appendChild(this);
+          document.documentElement.insertBefore(this, document.querySelector(this.is));
           return;
         }
         if (!this.bottom && !this.top) {
           this.top = true;
         }
-        setTimeout(bind$(this, '_show'));
+        this.offsetLeft;
+        this._show();
       },
       _tap: function(e){
-        if (e.target === this.$.content || e.target === this.$.icon) {
+        if (!this.selectable || e.target === this.$.content || e.target === this.$.icon) {
           this._hide();
         }
       },
@@ -71,20 +76,13 @@
           if (this$.content) {
             this$.innerHTML = this$.content;
           }
-          this$._for_similar(function(child){
-            var interesting_margin;
-            interesting_margin = this$.top ? 'marginTop' : 'marginBottom';
-            if (child !== this$ && parseFloat(child.style[interesting_margin] || 0) >= parseFloat(this$.style[interesting_margin] || 0)) {
-              child._shift();
-            }
-          });
-          this$._initialized = true;
           this$.show = true;
+          this$._update_position();
           this$.fire('show');
           return new Promise(function(resolve){
             setTimeout(function(){
               if (this$.timeout) {
-                setTimeout(bind$(this$, '_hide'), this$.timeout * 1000);
+                setTimeout(this$._hide.bind(this$), this$.timeout * 1000);
               }
               resolve();
             }, this$._transition_duration());
@@ -94,14 +92,8 @@
       _hide: function(){
         var this$ = this;
         promise = promise.then(function(){
-          var interesting_margin;
           this$.show = false;
-          interesting_margin = this$.top ? 'marginTop' : 'marginBottom';
-          this$._for_similar(function(child){
-            if (parseFloat(child.style[interesting_margin] || 0) > parseFloat(this$.style[interesting_margin] || 0)) {
-              child._unshift();
-            }
-          });
+          this$._update_position();
           this$.fire('hide');
           return new Promise(function(resolve){
             setTimeout(function(){
@@ -114,36 +106,42 @@
           });
         });
       },
-      _for_similar: function(callback){
-        var tagName, bottom, left, right, top, i$, ref$, len$, child;
-        tagName = this.tagName;
+      _get_similar: function(){
+        var _is, bottom, left, right, top, this$ = this;
+        _is = this.is;
         bottom = this.bottom;
         left = this.left;
         right = this.right;
         top = this.top;
-        for (i$ = 0, len$ = (ref$ = document.querySelector('html').children).length; i$ < len$; ++i$) {
-          child = ref$[i$];
-          if (child !== this && child.is === this.is && child.bottom === bottom && child.left === left && child.right === right && child.top === top, child.show) {
-            callback(child);
-          }
+        return Array.from(document.querySelector('html').children).filter(function(element){
+          return element.is === _is && element.bottom === bottom && element.left === left && element.right === right && element.top === top && element.show;
+        });
+      },
+      _update_position: function(callback){
+        var children, i$, len$, i, current, previous;
+        children = this._get_similar();
+        for (i$ = 0, len$ = children.length; i$ < len$; ++i$) {
+          i = i$;
+          current = children[i$];
+          previous = children[i - 1];
+          current._update_own_position(previous);
         }
       },
-      _shift: function(){
-        var style;
-        style = getComputedStyle(this);
-        if (this.top) {
-          this.style.marginTop = parseFloat(this.style.marginTop || 0) + parseFloat(style.height) + 'px';
+      _update_own_position: function(previous){
+        var previous_bottom, previous_height, previous_top;
+        if (previous) {
+          previous_bottom = parseFloat(previous.style.marginBottom || 0);
+          previous_height = parseFloat(getComputedStyle(previous).height);
+          previous_top = parseFloat(previous.style.marginTop || 0);
         } else {
-          this.style.marginBottom = parseFloat(this.style.marginBottom || 0) + parseFloat(style.height) + 'px';
+          previous_bottom = 0;
+          previous_height = 0;
+          previous_top = 0;
         }
-      },
-      _unshift: function(){
-        var style;
-        style = getComputedStyle(this);
         if (this.top) {
-          this.style.marginTop = parseFloat(this.style.marginTop || 0) - parseFloat(style.height) + 'px';
+          this.style.marginTop = previous_top + previous_height + 'px';
         } else {
-          this.style.marginBottom = parseFloat(this.style.marginBottom || 0) - parseFloat(style.height) + 'px';
+          this.style.marginBottom = previous_bottom + previous_height + 'px';
         }
       },
       _transition_duration: function(){
@@ -157,7 +155,4 @@
       }
     }
   ];
-  function bind$(obj, key, target){
-    return function(){ return (target || obj)[key].apply(obj, arguments) };
-  }
 }).call(this);
