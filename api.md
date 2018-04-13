@@ -400,6 +400,9 @@ Tooltip element. `csw-*` elements from this page which have `tooltip` property s
 
 Tooltip is applied to element by placing `csw-tooltip` element inside (see examples), it will be removed from DOM after initialization.
 
+Attributes (also available as properties, so use whatever is more convenient):
+* selectable - boolean, allow contents selection
+
 Examples:
 ```html
 <csw-button tooltip="Tooltip contents"><button>Button</button></csw-button>
