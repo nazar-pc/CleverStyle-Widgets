@@ -43,6 +43,12 @@
       element.addEventListener('pointermove', show);
       element.addEventListener('mouseleave', hide);
       element.addEventListener('pointerleave', hide);
+      document.addEventListener('wheel', hide, {
+        passive: true
+      });
+      document.addEventListener('touchmove', hide, {
+        passive: true
+      });
     },
     _initialize_tooltip: function(){
       if (!tooltip_element) {

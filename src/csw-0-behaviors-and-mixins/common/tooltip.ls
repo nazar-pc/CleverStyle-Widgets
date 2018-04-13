@@ -29,6 +29,8 @@ csw.behaviors.tooltip	=
 		element.addEventListener('pointermove', show)
 		element.addEventListener('mouseleave', hide)
 		element.addEventListener('pointerleave', hide)
+		document.addEventListener('wheel', hide, {passive: true})
+		document.addEventListener('touchmove', hide, {passive: true})
 	_initialize_tooltip : !->
 		if !tooltip_element
 			tooltip_element := document.createElement('csw-tooltip')
