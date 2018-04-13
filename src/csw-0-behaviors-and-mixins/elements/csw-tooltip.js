@@ -8,6 +8,10 @@
   csw.behaviors.cswTooltip = [
     csw.behaviors.tooltip, {
       properties: {
+        selectable: {
+          reflectToAttribute: true,
+          type: Boolean
+        },
         show: {
           reflectToAttribute: true,
           type: Boolean
@@ -22,10 +26,10 @@
         }
       },
       listeners: {
-        mouseenter: '_set_show',
-        pointerenter: '_set_show',
-        mouseleave: '_unset_show',
-        pointerleave: '_unset_show'
+        mouseenter: '_self_show',
+        pointerenter: '_self_show',
+        mouseleave: '_self_hide',
+        pointerleave: '_self_hide'
       },
       attached: function(){
         var parent, this$ = this;
@@ -47,18 +51,18 @@
           });
         }
       },
-      _set_show: function(){
-        if (this.reset_show) {
-          this.reset_show = false;
+      _self_show: function(){
+        if (this.selectable) {
           this.show = true;
         }
       },
-      _unset_show: function(){
-        this.show = false;
+      _self_hide: function(){
+        if (this.selectable) {
+          this._hide();
+        }
       },
       _show: function(element){
         var tooltip_position, x$, y$;
-        this.reset_show = true;
         if (!element.tooltip || this.show) {
           return;
         }
@@ -74,9 +78,7 @@
         this.show = true;
       },
       _hide: function(){
-        if (this.show) {
-          this.show = false;
-        }
+        this.show = false;
       },
       _get_tooltip_position: function(element){
         var tooltip_size, element_position, tooltip_position, client_width, left_offset;

@@ -6,6 +6,9 @@
 csw.behaviors.csw-tooltip	= [
 	csw.behaviors.tooltip
 	properties	:
+		selectable	:
+			reflectToAttribute	: true
+			type				: Boolean
 		show		:
 			reflectToAttribute	: true
 			type				: Boolean
@@ -16,10 +19,10 @@ csw.behaviors.csw-tooltip	= [
 			reflectToAttribute	: true
 			type				: Boolean
 	listeners	:
-		mouseenter		: '_set_show'
-		pointerenter	: '_set_show'
-		mouseleave		: '_unset_show'
-		pointerleave	: '_unset_show'
+		mouseenter		: '_self_show'
+		pointerenter	: '_self_show'
+		mouseleave		: '_self_hide'
+		pointerleave	: '_self_hide'
 	attached : !->
 		parent	= @parentNode
 		if !parent.matches('html')
@@ -33,14 +36,13 @@ csw.behaviors.csw-tooltip	= [
 				if e.keyCode == 27 && @show # Esc
 					@show = false
 			)
-	_set_show : !->
-		if @reset_show
-			@reset_show	= false
-			@show		= true
-	_unset_show : !->
-		@show = false
+	_self_show : !->
+		if @selectable
+			@show	= true
+	_self_hide : !->
+		if @selectable
+			@_hide()
 	_show : (element) !->
-		@reset_show = true
 		if !element.tooltip || @show
 			return
 		@_update_content(element.tooltip)
@@ -54,8 +56,7 @@ csw.behaviors.csw-tooltip	= [
 			..right	= tooltip_position.arrow_left_offset + 'px'
 		@show				= true
 	_hide : !->
-		if @show
-			@show	= false
+		@show	= false
 	_get_tooltip_position : (element) ->
 		@show-quick			= true
 		# Without Polymer.flush() content might not happen in tooltip yet, property might not be configured and as the result position will be incorrect

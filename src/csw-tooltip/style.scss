@@ -31,6 +31,10 @@
 	@apply --csw-tooltip-show-quick;
 }
 
+:host(:not([selectable])) {
+	cursor : default;
+}
+
 #content {
 	@apply --csw-tooltip-content;
 }
