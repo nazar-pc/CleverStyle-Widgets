@@ -70,6 +70,7 @@
       z$ = ok_button = ok.firstElementChild;
       z$.addEventListener('click', function(){
         resolve();
+        modal.close();
       });
       z1$ = modal;
       z1$.ok = ok_button;

@@ -58,6 +58,7 @@ csw.functions
 			ok_button	= ok.firstElementChild
 				..addEventListener('click', !->
 					resolve()
+					modal.close()
 				)
 			modal
 				..ok	= ok_button
