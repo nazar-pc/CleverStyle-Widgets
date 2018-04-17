@@ -47,6 +47,7 @@ csw.behaviors.csw-modal	= [
 		body				= document.body
 		body.modalOpened	= body.modalOpened || 0
 		if opened
+			document.querySelector('csw-tooltip')?.show = false
 			document.addEventListener('keydown', @_esc_handler)
 			# Actually insert content only when needed
 			if @content

@@ -56,7 +56,7 @@
         }
       },
       _opened_changed: function(opened){
-        var ref$, body, this$ = this;
+        var ref$, body, ref1$, this$ = this;
         if (opened === undefined) {
           return;
         }
@@ -68,6 +68,9 @@
         body = document.body;
         body.modalOpened = body.modalOpened || 0;
         if (opened) {
+          if ((ref1$ = document.querySelector('csw-tooltip')) != null) {
+            ref1$.show = false;
+          }
           document.addEventListener('keydown', this._esc_handler);
           if (this.content) {
             this.innerHTML = this.content;
