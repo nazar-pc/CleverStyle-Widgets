@@ -3,7 +3,7 @@ CleverStyle Widgets is a set of useful unstyled custom elements (Web Components)
 
 CleverStyle Widgets project was initially created as a part of [CleverStyle Framework](https://github.com/nazar-pc/CleverStyle-Framework)'s UI, but now available as a separate project for everyone to use.
 
-There are automated tests yet, if you can contribute some - definitely do so!
+There are no automated tests yet, if you can contribute some - definitely do so!
 
 ## How to install
 ```
